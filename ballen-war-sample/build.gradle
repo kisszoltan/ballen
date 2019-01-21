@@ -1,0 +1,26 @@
+apply plugin: 'war'
+apply plugin: 'org.springframework.boot'
+
+repositories {
+    mavenCentral()
+    ivy { url "../ivyrepo" }
+}
+
+springBoot {
+    mainClassName = 'com.example.ballen.DefaultServletInitializer'
+}
+
+clean {
+  delete 'bin', 'buildDir', "${project.webAppDirName}/frontend-es5", "${project.webAppDirName}/frontend-es6"
+}
+
+dependencies {
+    compile project(":ballen-addon-auth")
+    compile project(":ballen-addon-about")
+    compile project(":ballen-addon-hello")
+
+    compile group: "org.vaadin.pekka", name: "checkbox-group-java", version: "1.0.0.beta1"
+    compileOnly group: "org.projectlombok", name: "lombok", version: "${lombokVersion}"
+    
+    annotationProcessor group: "org.projectlombok", name: "lombok", version: "${lombokVersion}"
+}

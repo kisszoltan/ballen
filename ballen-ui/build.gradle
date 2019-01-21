@@ -1,0 +1,15 @@
+apply plugin: 'org.springframework.boot'
+
+jar {
+    enabled = true
+}
+
+bootJar {
+    classifier = 'boot'
+}
+
+dependencies {
+    compile     project(":ballen-core")
+    compile     group: "org.springframework.boot", name: "spring-boot-devtools"
+    testCompile group: "org.springframework.boot", name: "spring-boot-starter-test"
+}

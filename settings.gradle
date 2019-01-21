@@ -1,0 +1,9 @@
+rootProject.name = 'ballen'
+
+new File("${rootDir}").eachFile() { file ->
+    if (file.name.startsWith("${rootProject.name}")) {
+        include file.getName()  
+    }
+}
+
+enableFeaturePreview('IMPROVED_POM_SUPPORT')

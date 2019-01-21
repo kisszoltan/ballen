@@ -1,0 +1,9 @@
+{
+	"properties": [
+		{
+			"name": "ballen.login.view",
+			"type": "java.lang.Class",
+			"description": "Fully qualified class name of the view which provides user interface for logging in."
+		}
+	]
+}

@@ -1,0 +1,64 @@
+.product-form {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    overflow: auto;
+    background: var(--lumo-shade);
+    box-shadow: var(--overlay-box-shadow);
+}
+
+/* On narrow screens, move the side bar to the top,
+ * except for the link-tabs, which are hidden but
+ * can be opened via a button.
+ */
+@media ( max-width : 800px) {
+    .product-form {
+        height: calc(100% - var(--top-bar-height));
+    }
+}
+
+@media ( max-width : 550px) {
+    .product-form {
+        width: 100%;
+        /* Prevent text-fields from overflowing on narrow screens */ -
+        -vaadin-text-field-default-width: 6em;
+    }
+}
+
+/* Color codes for the availability statuses of the products */
+.Available {
+    color: #2dd085;
+}
+
+.Coming {
+    color: #ffc66e;
+}
+
+.Discontinued {
+    color: #f54993;
+}
+
+/* Replicating the labels of official Vaadin components 
+ * for the CheckBoxGroup add-on.
+*/
+.vaadin-label {
+    align-self: flex-start;
+    color: var(--lumo-secondary-text-color);
+    font-weight: 500;
+    font-size: var(--lumo-font-size-s);
+    margin-left: calc(var(--lumo-border-radius)/4);
+    transition: color 0.2s;
+    line-height: 1;
+    padding-bottom: 0.5em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: relative;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.vaadin-label:hover {
+    color: var(--lumo-body-text-color);
+}

@@ -1,0 +1,8 @@
+dependencies {
+    compile group: "com.vaadin", name: "vaadin-core"
+    compile group: "com.vaadin", name: "vaadin-spring"
+    compile group: "commons-beanutils", name: "commons-beanutils", version: "1.9.2"
+    
+    compileOnly group: "org.projectlombok", name: "lombok", version: "1.16.20"
+    annotationProcessor group: "org.projectlombok", name: "lombok", version: "1.16.20"
+}
