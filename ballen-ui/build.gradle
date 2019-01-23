@@ -1,6 +1,7 @@
 plugins {
     id "org.springframework.boot"
 }
+apply from: "${rootProject.projectDir}/gradle/github-publish.gradle"
 
 // packaging normal archive
 jar {

@@ -3,7 +3,6 @@ apply plugin: 'org.springframework.boot'
 
 repositories {
     mavenCentral()
-    ivy { url "../ivyrepo" }
 }
 
 springBoot {

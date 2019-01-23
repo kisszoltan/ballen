@@ -1,0 +1,28 @@
+//see original version of this script at https://jeroenmols.com/blog/2016/02/05/wagongit/
+apply plugin: 'maven'
+
+repositories {
+    maven {
+        url "https://raw.github.com/synergian/wagon-git/releases"
+    }
+}
+
+configurations {
+    deployLibrary
+}
+
+dependencies {
+    compile fileTree(dir: 'build/libs', include: ['*.jar'])
+
+    deployLibrary "ar.com.synergian:wagon-git:0.3.0"
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        configuration = configurations.deployLibrary
+        // make sure your github account has SSH key setup as described in https://help.github.com/articles/connecting-to-github-with-ssh/
+        // use no passphase or add Authentication extension to the repository
+        repository(url: 'git:' + repositoryBranch + '://git@github.com:' + githubCompany + '/' + githubRepositoryName + '.git')
+    }
+}
+
