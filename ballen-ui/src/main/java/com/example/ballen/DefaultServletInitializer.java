@@ -21,6 +21,8 @@ public class DefaultServletInitializer extends SpringBootServletInitializer {
      * @param args command line arguments
      */
     public static void main(final String[] args) {
+        System.setProperty("spring.config.location",
+                "classpath:/defaults.properties,classpath:/,classpath:/config/,file:./,file:./config/");
         SpringApplication.run(getSources(), args);
     }
 
