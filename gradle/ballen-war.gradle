@@ -1,0 +1,25 @@
+repositories {
+    mavenCentral()
+    maven { url "https://maven.vaadin.com/vaadin-prereleases/" }
+    maven { url "http://maven.vaadin.com/vaadin-addons/" }
+    maven { url "https://raw.github.com/kisszoltan/ballen/snapshots" }
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "com.vaadin:vaadin-bom:10.0.5"
+        mavenBom "org.springframework.boot:spring-boot-dependencies:2.1.2.RELEASE"
+    }
+}
+
+springBoot {
+    mainClassName = 'com.example.ballen.DefaultServletInitializer'
+}
+
+clean {
+  delete 'bin', 'buildDir', "${project.webAppDirName}/frontend-es5", "${project.webAppDirName}/frontend-es6"
+}
+
+dependencies {
+    compile group: "com.vaadin", name: "vaadin-spring-boot-starter"
+}
