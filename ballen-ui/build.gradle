@@ -1,9 +1,13 @@
-apply plugin: 'org.springframework.boot'
+plugins {
+    id "org.springframework.boot"
+}
 
+// packaging normal archive
 jar {
     enabled = true
 }
 
+// packaging executable archive
 bootJar {
     classifier = 'boot'
 }

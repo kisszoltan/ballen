@@ -1,0 +1,18 @@
+buildscript {
+    repositories {
+        maven {url "https://maven.vaadin.com/vaadin-prereleases/" }
+    }
+}
+
+subprojects {
+    repositories {
+        maven { url "https://maven.vaadin.com/vaadin-prereleases/" }
+        maven { url "http://maven.vaadin.com/vaadin-addons/" }
+    }
+    
+    dependencyManagement {
+        imports {
+            mavenBom "com.vaadin:vaadin-bom:${vaadinVersion}"
+        }
+    }
+}

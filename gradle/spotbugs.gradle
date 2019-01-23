@@ -1,0 +1,10 @@
+subprojects {
+    apply plugin: 'com.github.spotbugs'
+
+    // using name matching (instead of withType()) to overcome classloader issues
+    // @see https://github.com/gradle/gradle-native/issues/742
+    tasks.matching { it.name.startsWith("spotbugs") }.configureEach { spotBugs ->
+        spotBugs.reports.html.enabled = true
+        spotBugs.reports.xml.enabled = false
+    }
+}

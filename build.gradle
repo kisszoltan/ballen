@@ -1,48 +1,31 @@
 buildscript {
     ext {
-        springBootVersion    = '2.0.2.RELEASE'
+        springBootVersion    = '2.1.2.RELEASE'
         vaadinVersion        = '10.0.5'
         lombokVersion        = '1.16.20'
     }
-    repositories {
-        mavenCentral()
-        maven {url "https://maven.vaadin.com/vaadin-prereleases/" }
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-    }
 }
 
-allprojects{
+plugins { 
+  id 'java'
+  id 'eclipse-wtp'
+  id 'io.spring.dependency-management' version '1.0.6.RELEASE' apply false
+  id 'org.springframework.boot' version '2.1.2.RELEASE' apply false
+  id 'com.github.spotbugs' version '1.6.9' apply false
+}
+
+allprojects {
     group = 'com.example.ballen'
     version = '0.0.1-SNAPSHOT'
 }
 
-subprojects{
+apply from: "gradle/springboot.gradle"
+apply from: "gradle/vaadin.gradle"
+apply from: "gradle/spotbugs.gradle"
+
+subprojects {
     apply plugin: 'java'
-    apply plugin: 'eclipse-wtp'
-    apply plugin: 'io.spring.dependency-management'
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
-    
-    // Add SpringLoaded for all sub-projects which are SpringBoot enabled
-    plugins.withType(org.springframework.boot.gradle.plugin.SpringBootPlugin) {
-        if (project.hasProperty('springLoaded')) {
-            bootRun.jvmArgs += springLoaded
-            bootRun.jvmArgs += "-noverify"
-        }
-        dependencies { compile group: "com.vaadin", name: "vaadin-spring-boot-starter", version: "${vaadinVersion}" }
-    }
-
-    repositories{
-        mavenCentral()
-        maven { url "https://maven.vaadin.com/vaadin-prereleases/" }
-        maven { url "http://maven.vaadin.com/vaadin-addons/" }
-    }
-    
-    dependencies {
-        compile "com.vaadin:vaadin-bom:${vaadinVersion}"
-        compile "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
-    }
 }

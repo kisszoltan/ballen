@@ -26,13 +26,14 @@ import com.vaadin.flow.server.VaadinSession;
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class Menu extends FlexLayout {
 
+    private static final long serialVersionUID = 2019_01_23_001L;
     private static final String SHOW_TABS = "show-tabs";
 
     private final HorizontalLayout header = new HorizontalLayout();
     private final Tabs tabs = new Tabs();
 
     @Autowired
-    private ApplicationConfiguration config;
+    private transient ApplicationConfiguration config;
 
     public Menu() {
         setClassName("menu-bar");

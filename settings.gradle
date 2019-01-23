@@ -5,5 +5,3 @@ new File("${rootDir}").eachFile() { file ->
         include file.getName()  
     }
 }
-
-enableFeaturePreview('IMPROVED_POM_SUPPORT')
