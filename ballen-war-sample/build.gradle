@@ -16,7 +16,6 @@ clean {
 dependencies {
     compile project(":ballen-addon-auth")
     compile project(":ballen-addon-about")
-    compile project(":ballen-addon-hello")
 
     compile group: "org.vaadin.pekka", name: "checkbox-group-java", version: "1.0.0.beta1"
     compileOnly group: "org.projectlombok", name: "lombok", version: "${lombokVersion}"
