@@ -7,6 +7,7 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 
 import com.example.ballen.ApplicationConfiguration;
+import com.example.ballen.core.auth.CurrentUser;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
@@ -51,7 +52,9 @@ public class Menu extends FlexLayout {
         add(tabs);
 
         // logout menu item
-        add(logoutButton());
+        if (CurrentUser.isPresent()) {
+            add(logoutButton());
+        }
     }
 
     /**
@@ -93,8 +96,8 @@ public class Menu extends FlexLayout {
     private void postConstruct() {
         // Note! Image resource url is resolved here as it is dependent on the
         // execution mode (development or production) and browser ES level support
-        String resolvedImage = VaadinServletService.getCurrent()
-                .resolveResource(config.getLogo(), VaadinSession.getCurrent().getBrowser());
+        String resolvedImage = VaadinServletService.getCurrent().resolveResource(config.getLogo(),
+                VaadinSession.getCurrent().getBrowser());
 
         Image image = new Image(resolvedImage, "");
         header.add(image);

@@ -1,5 +1,7 @@
 package com.example.ballen.core.auth;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.vaadin.flow.server.VaadinRequest;
 import com.vaadin.flow.server.VaadinService;
 
@@ -57,5 +59,9 @@ public final class CurrentUser {
             throw new IllegalStateException("No request bound to current thread.");
         }
         return request;
+    }
+
+    public static boolean isPresent() {
+        return StringUtils.isNotBlank(get());
     }
 }
