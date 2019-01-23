@@ -9,11 +9,21 @@ public class ApplicationConfiguration {
 
     private String name;
 
-    public String getName() {
-        return name;
-    }
+    private String logo = "frontend://img/logo.png";
 
     public void setName(final String name) {
         this.name = name;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(final String logo) {
+        this.logo = logo;
+    }
+
+    public String getName() {
+        return name;
     }
 }

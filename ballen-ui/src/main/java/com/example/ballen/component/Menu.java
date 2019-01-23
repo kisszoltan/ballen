@@ -94,8 +94,7 @@ public class Menu extends FlexLayout {
         // Note! Image resource url is resolved here as it is dependent on the
         // execution mode (development or production) and browser ES level support
         String resolvedImage = VaadinServletService.getCurrent()
-                // TODO read this from application.properties
-                .resolveResource("frontend://img/table-logo.png", VaadinSession.getCurrent().getBrowser());
+                .resolveResource(config.getLogo(), VaadinSession.getCurrent().getBrowser());
 
         Image image = new Image(resolvedImage, "");
         header.add(image);
