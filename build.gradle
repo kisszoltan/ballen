@@ -9,7 +9,6 @@ buildscript {
 plugins { 
   id 'java'
   id 'eclipse-wtp'
-  id 'io.spring.dependency-management' version '1.0.6.RELEASE' apply false
   id 'org.springframework.boot' version '2.1.2.RELEASE' apply false
   id 'com.github.spotbugs' version '1.6.9' apply false
 }
@@ -22,6 +21,7 @@ allprojects {
 apply from: "gradle/springboot.gradle"
 apply from: "gradle/vaadin.gradle"
 apply from: "gradle/spotbugs.gradle"
+apply from: "gradle/github-publish.gradle"
 
 subprojects {
     apply plugin: 'java'

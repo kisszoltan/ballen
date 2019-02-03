@@ -2,6 +2,7 @@
 apply plugin: 'maven'
 
 repositories {
+    mavenCentral()
     maven {
         url "https://raw.github.com/synergian/wagon-git/releases"
     }
@@ -12,7 +13,7 @@ configurations {
 }
 
 dependencies {
-    compile fileTree(dir: 'build/libs', include: ['*.jar'])
+    compile fileTree(dir: 'build/libs', include: ['*.jar'], exclude: ['*-boot.jar'])
 
     deployLibrary "ar.com.synergian:wagon-git:0.3.0"
 }
