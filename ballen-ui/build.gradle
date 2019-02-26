@@ -16,5 +16,6 @@ bootJar {
 dependencies {
     compile     project(":ballen-core")
     compile     group: "org.springframework.boot", name: "spring-boot-devtools"
+    compile     group: "com.github.appreciated",   name: "app-layout-addon",         version: "2.0.7"
     testCompile group: "org.springframework.boot", name: "spring-boot-starter-test"
 }
