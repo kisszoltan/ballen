@@ -13,6 +13,10 @@ clean {
   delete 'bin', 'buildDir', "${project.webAppDirName}/frontend-es5", "${project.webAppDirName}/frontend-es6"
 }
 
+publishBinaryPublicationToMavenLocal.onlyIf { false }
+publishToMavenLocal.onlyIf { false }
+
+
 dependencies {
     compile project(":ballen-addon-auth")
     compile project(":ballen-addon-about")
