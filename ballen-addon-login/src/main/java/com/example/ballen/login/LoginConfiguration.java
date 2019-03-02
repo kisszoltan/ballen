@@ -1,13 +1,13 @@
-package com.example.ballen.auth;
+package com.example.ballen.login;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-import com.example.ballen.auth.view.LoginScreen;
+import com.example.ballen.login.view.LoginScreen;
 import com.vaadin.flow.component.Component;
 
 @org.springframework.stereotype.Component
 @ConfigurationProperties(prefix = "ballen.login", ignoreUnknownFields = true)
-public class AuthenticationConfiguration {
+public class LoginConfiguration {
 
     private Class<? extends Component> view = LoginScreen.class;
 

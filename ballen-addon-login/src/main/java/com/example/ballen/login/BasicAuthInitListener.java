@@ -1,4 +1,4 @@
-package com.example.ballen.auth;
+package com.example.ballen.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ import com.vaadin.flow.server.VaadinServiceInitListener;
 public class BasicAuthInitListener implements VaadinServiceInitListener {
 
     @Autowired
-    private transient AuthenticationConfiguration config;
+    private transient LoginConfiguration config;
 
     @Autowired
     private transient AccessControl accessControl;

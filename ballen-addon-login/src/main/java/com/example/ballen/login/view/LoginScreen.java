@@ -1,4 +1,4 @@
-package com.example.ballen.auth.view;
+package com.example.ballen.login.view;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
