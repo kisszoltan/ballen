@@ -1,7 +1,12 @@
 package com.example.ballen.crud;
 
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.example.ballen.backend.DataService;
 import com.example.ballen.backend.data.Product;
+import com.example.ballen.core.auth.AccessControl;
 import com.example.ballen.view.DefaultLayout;
 import com.example.ballen.view.MenuAction;
 import com.vaadin.flow.component.button.Button;
@@ -30,6 +35,9 @@ import com.vaadin.flow.router.RouteAlias;
 @StyleSheet("css/shared-styles.css")
 public class SampleCrudView extends HorizontalLayout implements HasUrlParameter<String>, HasDynamicTitle {
 
+    @Autowired
+    private transient AccessControl accessControl;
+
     private ProductGrid grid;
     private ProductForm form;
     private TextField filter;
@@ -40,6 +48,10 @@ public class SampleCrudView extends HorizontalLayout implements HasUrlParameter<
     private ProductDataProvider dataProvider = new ProductDataProvider();
 
     public SampleCrudView() {
+    }
+    
+    @PostConstruct
+    public void postConstruct() {
         setSizeFull();
         HorizontalLayout topLayout = createTopBar();
 
@@ -61,7 +73,7 @@ public class SampleCrudView extends HorizontalLayout implements HasUrlParameter<
         add(barAndGridLayout);
         add(form);
 
-        viewLogic.init();
+        viewLogic.init(accessControl);
     }
 
     public HorizontalLayout createTopBar() {

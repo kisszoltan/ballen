@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.ballen.core.auth.AccessControl;
-import com.example.ballen.core.auth.AccessControlFactory;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.server.ServiceInitEvent;
 import com.vaadin.flow.server.VaadinServiceInitListener;
 
@@ -20,14 +20,16 @@ public class BasicAuthInitListener implements VaadinServiceInitListener {
     @Autowired
     private transient AuthenticationConfiguration config;
 
+    @Autowired
+    private transient AccessControl accessControl;
+
     @Override
     public void serviceInit(final ServiceInitEvent initEvent) {
-        final AccessControl accessControl = AccessControlFactory.getInstance().createAccessControl();
-
         initEvent.getSource().addUIInitListener(uiInitEvent -> {
             uiInitEvent.getUI().addBeforeEnterListener(enterEvent -> {
-                if (!accessControl.isUserSignedIn() && !config.getView().equals(enterEvent.getNavigationTarget()))
-                    enterEvent.rerouteTo(config.getView());
+                final Class<? extends Component> login = config.getView();
+                if (!accessControl.isUserSignedIn() && !login.equals(enterEvent.getNavigationTarget()))
+                    enterEvent.rerouteTo(login);
             });
         });
     }

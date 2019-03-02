@@ -1,0 +1,18 @@
+apply plugin: 'java'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'org.springframework.boot'
+
+repositories {
+    mavenCentral()
+    maven { url "https://maven.vaadin.com/vaadin-prereleases/" }
+    maven { url "http://maven.vaadin.com/vaadin-addons/" }
+    maven { url "https://raw.github.com/kisszoltan/ballen/snapshots" }
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "com.vaadin:vaadin-bom:${vaadinVersion}"
+        mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
+    }
+}

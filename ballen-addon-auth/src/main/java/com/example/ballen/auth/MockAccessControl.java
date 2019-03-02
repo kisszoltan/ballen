@@ -1,11 +1,14 @@
-package com.example.ballen.core.auth;
+package com.example.ballen.auth;
+
+import com.example.ballen.core.auth.AccessControl;
+import com.example.ballen.core.auth.CurrentUser;
 
 /**
  * Default mock implementation of {@link AccessControl}. This implementation
  * accepts any string as a password, and considers the user "admin" as the only
  * administrator.
  */
-public class BasicAccessControl implements AccessControl {
+public class MockAccessControl implements AccessControl {
 
     @Override
     public boolean signIn(final String username, final String password) {

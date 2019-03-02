@@ -5,7 +5,6 @@ import java.io.Serializable;
 import com.example.ballen.backend.DataService;
 import com.example.ballen.backend.data.Product;
 import com.example.ballen.core.auth.AccessControl;
-import com.example.ballen.core.auth.AccessControlFactory;
 import com.vaadin.flow.component.UI;
 
 /**
@@ -21,15 +20,17 @@ public class SampleCrudLogic implements Serializable {
 
     private SampleCrudView view;
 
-    public SampleCrudLogic(SampleCrudView simpleCrudView) {
+    private AccessControl accessControl;
+
+    public SampleCrudLogic(final SampleCrudView simpleCrudView) {
         view = simpleCrudView;
     }
 
-    public void init() {
+    public void init(final AccessControl ac) {
+        accessControl = ac;
         editProduct(null);
         // Hide and disable if not admin
-        view.setNewProductEnabled(
-                AccessControlFactory.getInstance().createAccessControl().isUserInRole(AccessControl.ADMIN_ROLE_NAME));
+        view.setNewProductEnabled(accessControl.isUserInRole(AccessControl.ADMIN_ROLE_NAME));
     }
 
     public void cancelProduct() {
@@ -105,7 +106,7 @@ public class SampleCrudLogic implements Serializable {
     }
 
     public void rowSelected(Product product) {
-        if (AccessControlFactory.getInstance().createAccessControl().isUserInRole(AccessControl.ADMIN_ROLE_NAME)) {
+        if (accessControl.isUserInRole(AccessControl.ADMIN_ROLE_NAME)) {
             editProduct(product);
         }
     }

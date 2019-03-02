@@ -1,7 +1,8 @@
 package com.example.ballen.auth.view;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.example.ballen.core.auth.AccessControl;
-import com.example.ballen.core.auth.AccessControlFactory;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Html;
 import com.vaadin.flow.component.button.Button;
@@ -29,10 +30,10 @@ public class LoginScreen extends FlexLayout implements HasDynamicTitle {
     private PasswordField password;
     private Button login;
     private Button forgotPassword;
+    @Autowired
     private AccessControl accessControl;
 
     public LoginScreen() {
-        accessControl = AccessControlFactory.getInstance().createAccessControl();
         buildUI();
         username.focus();
     }
